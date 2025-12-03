@@ -542,14 +542,14 @@
                                 <div class="advice-icon">${advice.rainIcon}</div>
                                 <div class="advice-content">
                                     <div class="advice-text">${advice.rainText}</div>
-                                    <div class="advice-sub">CHANCE OF RAIN ${current.rain}%</div>
+                                    <div class="advice-sub">降雨率 ${current.rain}</div>
                                 </div>
                             </div>
                             <div class="advice-item">
                                 <div class="advice-icon">${advice.clothIcon}</div>
                                 <div class="advice-content">
                                     <div class="advice-text">${advice.clothText}</div>
-                                    <div class="advice-sub">PEAK TEMP ${current.maxTemp}°</div>
+                                    <div class="advice-sub">最高溫 ${current.maxTemp}°</div>
                                 </div>
                             </div>
                         </div>
@@ -580,7 +580,7 @@
                         <div class="mini-icon">${getWeatherIcon(f.weather)}</div>
                         <div>
                             <div class="mini-temp">${f.minTemp}° - ${f.maxTemp}°</div>
-                            <div class="mini-rain"><i class="ph-fill ph-drop"></i> ${f.rain}%</div>
+                            <div class="mini-rain"><i class="ph-fill ph-drop"></i> ${f.rain}</div>
                         </div>
                     </div>
                 `;
@@ -590,7 +590,9 @@
             const now = new Date();
             const month = now.getMonth() + 1;
             const date = now.getDate();
-            document.getElementById('updateTime').textContent = `DATE: ${month < 10 ? '0'+month : month} / ${date < 10 ? '0'+date : date}`;
+            const dayIndex = now.getDay();
+            const days = ["週日", "週一", "週二", "週三", "週四", "週五", "週六"];
+            document.getElementById('updateTime').textContent = `DATE: ${month < 10 ? '0'+month : month} / ${date < 10 ? '0'+date : date} ${days[dayIndex]}`;
         }
 
         async function fetchWeather() {
